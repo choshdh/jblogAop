@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="logo">
+	
+	<insert id="fileInsert" parameterType="FileVo">
+		<![CDATA[
+			insert into files
+			values(seq_file_no.nextval,
+				   #{fileSaveDir} , 
+				   #{fileOriginalName} , 
+				   #{fileExName} , 
+				   #{fileSaveName} , 
+				   #{filePath} , 
+				   #{fileSize} , 
+				   sysdate )
+		]]>	
+	</insert>
+	
+	<select id="select" parameterType="String" resultType="String">
+		<![CDATA[
+			select logofile fileSaveName
+			from users u, blog b
+			where u.userno = b.userno and
+				  u.id=#{id}
+		]]>
+	</select>
+	
+	<update id="change" parameterType="Map">
+		<![CDATA[
+			update blog
+			set logofile = #{fileSaveName}
+			where userno=#{userNo}
+		]]>
+	</update>
+
+</mapper>

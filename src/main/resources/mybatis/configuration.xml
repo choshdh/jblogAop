@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 참조자료형(객체)을 사용해서 쿼리를 손쉽게 작성 할 수 있는 대신 쿼리를 생성할때 필요한 vo가 무엇들이 있는지 정의 해주어야한다.  -->
+	<typeAliases>
+		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
+		<typeAlias alias="FileVo" type="com.javaex.vo.FileVo" />
+		<typeAlias alias="BlogVo" type="com.javaex.vo.BlogVo" />
+		<typeAlias alias="CateVo" type="com.javaex.vo.CateVo" />
+		<typeAlias alias="PostVo" type="com.javaex.vo.PostVo" />
+		<typeAlias alias="CommentVo" type="com.javaex.vo.CommentVo" />
+    </typeAliases>
+    
+    <!-- 사용할 쿼리가 적혀있는 페이지 위치를 세팅 -->
+	<mappers>
+		<mapper resource="mybatis/mappers/user.xml" />
+		<mapper resource="mybatis/mappers/logo.xml" />
+		<mapper resource="mybatis/mappers/blog.xml" />
+		<mapper resource="mybatis/mappers/cate.xml" />
+		<mapper resource="mybatis/mappers/post.xml" />
+		<mapper resource="mybatis/mappers/comment.xml" />
+	</mappers>
+</configuration>

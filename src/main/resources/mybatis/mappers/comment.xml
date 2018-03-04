@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+	<select id="list" parameterType="int" resultType="HashMap">
+		<![CDATA[
+			select co.userno userNo, u.username userName, co.cmtNo cmtNo, co.cmtcontent cmtContent, to_char(co.regdate, 'YYYY/MM/DD') regDate
+			from users u , comments co
+			where u.userno = co.userno and
+				  co.postno = #{postNo}
+			order by co.cmtNo desc
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="Map">
+		<selectKey keyProperty="cmtNo" resultType="String" order="BEFORE">
+			select seq_comments_no.nextval cmtNo from dual
+		</selectKey>
+		<![CDATA[
+			insert into comments 
+			values(#{cmtNo}, #{userNo}, #{postNo}, #{cmtContent}, sysdate)
+		]]>
+	</insert>
+	
+	<delete id="delete" parameterType="Map">
+		<![CDATA[
+			delete from comments
+			where userno = #{userNo} and postno = #{postNo} and cmtno = #{cmtNo} 
+		]]>
+	</delete>
+
+</mapper>
