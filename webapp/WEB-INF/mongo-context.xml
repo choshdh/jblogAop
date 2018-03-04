@@ -9,7 +9,7 @@
 	<mongo:mongo-client host="localhost" port="27017" />
 	<mongo:db-factory dbname="spring" mongo-ref="mongo"/>
 	
-	<!-- name 값이들어가 있었는데 필요없을거 같아서 빼봤는데 문제 없이 된다 매개변수로 어떤 자료형이 넘어 갈건지만 ref 로 잘 정해주면 되는거 같다. -->
+	<!-- name 값이들어가 있었는데 필요없을거 같아서 빼봤는데 문제 없이 된다 매개변수로 넘어가는 ref만 잘 정해주면 되는거 같다. -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongoDbFactory"/>
 	</bean>
