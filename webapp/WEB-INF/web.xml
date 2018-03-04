@@ -19,15 +19,14 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
 	</listener>
 	 
+	<!-- 컨텍스트 파일을 여러개 생성하고 추가할 시에는 , 나 공백 을 사용한다 이거몰라서  하루 버림 하하 임병~-->
 	<context-param> 
 		<param-name>contextConfigLocation</param-name> 
-		<param-value>/WEB-INF/applicationContext.xml</param-value> 
+		<param-value>
+			/WEB-INF/applicationContext.xml,
+			/WEB-INF/mongo-context.xml
+		</param-value> 
 	</context-param> 
-
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mongo-context.xml</param-value>
-	</context-param>
 
 	<!-- 자식 --> 
 	<!-- 서블릿을 사용 하겠다고 선언 --> 
